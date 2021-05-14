@@ -1,4 +1,4 @@
-All codes are from the URL: https://zhuanlan.zhihu.com/p/127039696
+Core codes are from the URL: https://zhuanlan.zhihu.com/p/127039696
 
 get_face is the python file that can use your camera to take 1200 photos into a fold.
 
