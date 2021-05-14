@@ -1,4 +1,5 @@
 import cv2
+import manage_img_fold as mif
 
 recognizer = cv2.face.LBPHFaceRecognizer_create()
 recognizer.read('face_trainer/trainer.yml')
@@ -8,7 +9,7 @@ font = cv2.FONT_HERSHEY_SIMPLEX
 
 idnum = 0
 
-names = ['Lin Shengfeng', 'admin']
+names = mif.getImgList()
 
 cam = cv2.VideoCapture(0)
 # minW = 0.1*cam.get(3)
@@ -31,7 +32,7 @@ while True:
         idnum, confidence = recognizer.predict(gray[y:y+h, x:x+w])
 
         if confidence < 50:
-            idnum = "Has Existed."
+            idnum = names[idnum]
             confidence = "{0}%".format(round(100 - confidence))
         else:
             idnum = "unknown"

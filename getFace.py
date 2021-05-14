@@ -1,7 +1,7 @@
 import cv2
 import os
 
-#自己加入的功能函数，输入是你的姓名，输出是img文件夹下以你的名字命名的一个文件夹
+
 def mkdir(name):
     path = 'img/'+name
     folder = os.path.exists(path)
@@ -32,16 +32,11 @@ def generate(name):
         gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
         # 人脸检测
-        # 关于detectMultiScale()中的scaleFactor以及minNeighbors参数说明
         """
         大概意思是Haar cascade的工作原理是一种“滑动窗口”的方法，通过在图像中不断的“滑动检测窗口”来匹配人脸。
-
         因为图像的像素有大有小，图像中的人脸因为远近不同也会有大有小，所以需要通过scaleFactor参数设置一个缩小的比例，对图像进行逐步缩小来检测，这个参数设置的越大，计算速度越快，但可能会错过了某个大小的人脸。
-
         其实可以根据图像的像素值来设置此参数，像素大缩小的速度就可以快一点，通常在1~1.5之间。
-
         那么，经过多次的迭代，实际会检测出很多很多个人脸，这一点可以通过把minNeighbors 设为0来验证。
-
         所以呢，minNeighbors参数的作用就来了，只有其“邻居”大于等于这个值的结果才认为是正确结果。
         ————————————————
         版权声明：本文为CSDN博主「赵赵赵颖」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。

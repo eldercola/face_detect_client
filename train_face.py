@@ -2,6 +2,7 @@ import numpy as np
 from PIL import Image
 import os
 import cv2
+import manage_img_fold as mif
 
 path = 'img'
 recognizer = cv2.face.LBPHFaceRecognizer_create()
@@ -20,7 +21,8 @@ def getImagesAndLabels(path):
     for imagePath in imagePaths:
         PIL_img = Image.open(imagePath).convert('L')
         img_numpy = np.array(PIL_img, 'uint8')
-        id = int(os.path.split(imagePath)[-1].split(".")[0])
+        # id = int(os.path.split(imagePath)[-1].split(".")[0])
+        id = mif.getYourFoldNum(os.path.dirname(imagePath)[4:])
         faces = detector.detectMultiScale(img_numpy)
         for (x, y, w, h) in faces:
             faceSamples.append(img_numpy[y:y + h, x: x + w])
