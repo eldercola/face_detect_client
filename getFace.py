@@ -1,7 +1,7 @@
 import cv2
 import os
 
-
+#自己加入的功能函数，输入是你的姓名，输出是img文件夹下以你的名字命名的一个文件夹
 def mkdir(name):
     path = 'img/'+name
     folder = os.path.exists(path)
